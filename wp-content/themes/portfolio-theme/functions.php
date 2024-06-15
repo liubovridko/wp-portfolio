@@ -47,11 +47,10 @@ function portfolio_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'portfolio' ),
-		)
-	);
+	register_nav_menus(array(
+		'primary' => __('Primary Menu', 'portfolio'),
+		'footer' => __('Footer Menu', 'portfolio'),
+  ));
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -82,25 +81,28 @@ function portfolio_setup() {
 		)
 	);
 
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
 	/**
 	 * Add support for core custom logo.
 	 *
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
 	add_theme_support(
-		'custom-logo',
+		'custom_logo',
 		array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 40,
+			'width'       => 180,
 			'flex-width'  => true,
 			'flex-height' => true,
 		)
 	);
+
+	// Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
 }
 add_action( 'after_setup_theme', 'portfolio_setup' );
+
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -120,19 +122,18 @@ add_action( 'after_setup_theme', 'portfolio_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function portfolio_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'portfolio' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'portfolio' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+	register_sidebar(array(
+		 'name'          => __('Footer Menu', 'portfolio'),
+		 'id'            => 'footer-1',
+		 'description'   => __('Add widgets here to appear in your footer.', 'portfolio'),
+		 'before_widget' => '<div class="footer-widget">',
+		 'after_widget'  => '</div>',
+		 'before_title'  => '<h2 class="widget-title">',
+		 'after_title'   => '</h2>',
+	));
 }
-add_action( 'widgets_init', 'portfolio_widgets_init' );
+add_action('widgets_init', 'portfolio_widgets_init');
+
 
 /**
  * Enqueue scripts and styles.
@@ -150,8 +151,8 @@ function portfolio_scripts() {
 
 	// Enqueue scripts
 	wp_enqueue_script( 'jquery', get_template_directory_uri(). '/assets/js/jquery-3.7.1.js',  array(), '1.0.0', true  );
-	wp_enqueue_script( 'portfolio-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), _S_VERSION, true );
-	wp_enqueue_script( 'portfolio-script', get_template_directory_uri() . '/js/main.js', array('jquery', 'portfolio-navigation'), _S_VERSION, true );
+	wp_enqueue_script( 'portfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'portfolio-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery', 'portfolio-navigation'), _S_VERSION, true );
 
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

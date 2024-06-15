@@ -11,24 +11,28 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'portfolio' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'portfolio' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'portfolio' ), 'portfolio', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
+<footer>
+    <div class="container">
+	 <div class="footer-logo">
+            <?php 
+           if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
+						the_custom_logo();
+            } else {
+                echo '<a href="'.home_url().'"><img src="'.get_template_directory_uri().'/assets/img/logo.png" alt="John Doe Logo" width="290" height="65"></a>';
+            }
+            ?>
+        </div>
+        <nav>
+            <?php
+            if (is_active_sidebar('footer-1')) {
+                dynamic_sidebar('footer-1');
+            }
+            ?>
+        </nav>
+        <p>&copy; <?php echo date("Y"); ?> All rights reserved</p>
+    </div>
+</footer>
 <?php wp_footer(); ?>
-
+</div>
 </body>
 </html>

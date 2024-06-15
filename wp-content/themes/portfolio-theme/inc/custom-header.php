@@ -17,6 +17,7 @@
  * @uses portfolio_header_style()
  */
 function portfolio_custom_header_setup() {
+
 	add_theme_support(
 		'custom-header',
 		apply_filters(
