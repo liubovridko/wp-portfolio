@@ -2,6 +2,7 @@
 body {
    font-family: 'Montserrat', sans-serif;
    color: #1f1f1f;
+   margin: 0;
 }
 
 h1, h2, h3, .special-font {
@@ -209,6 +210,10 @@ nav .nav-menu .menu-item-has-children:hover .sub-menu {
       padding-left: 8.33%; /* 100px out of 1200px container */
       padding-right: 16.67%; /* 200px out of 1200px container */
    }
+
+   .banner-content h1 {
+      font-size: 85px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -333,9 +338,21 @@ footer p {
    line-height: 21px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+   footer {
+      padding: 85px 0;
+   }
+}
+
+@media (max-width: 1200px) {
    footer {
       padding: 70px 0;
+   }
+}
+
+@media (max-width: 768px) {
+   footer {
+      padding: 50px 0;
    }
    .footer-widget .menu {
       gap: 43px;
@@ -388,6 +405,12 @@ footer p {
 }
 
 /* Responsive Styles */
+@media (max-width: 1400px) {
+   .superstar-seo .text-column {
+      flex: 0 0 calc(60% - 75px);
+      padding: 0 75px;
+  }
+}
 @media (max-width: 1200px) {
    .superstar-seo .content-wrapper {
        flex-direction: column;
@@ -626,10 +649,22 @@ footer p {
 }
 
 /* Responsive Styles */
+
+@media (max-width: 992px) {
+   .section-header h2 {
+      font-size: 57px;
+   }
+
+}
+
 @media (max-width: 768px) {
+   .testimonials {
+      padding: 90px 0;
+  }
+
    .section-header {
        flex-direction: column;
-       align-items: flex-start;
+       align-items: center;
    }
 
    .slider-nav {
@@ -745,4 +780,18 @@ footer p {
 .contact-info p {
    margin: 0;
    color: #333;
+}
+
+@media (max-width: 768px) {
+   .contact {
+      padding: 90px 0;
+  }
+  .contact .container {
+      flex-direction: column;
+      align-items: center;
+   }
+   .contact-text {
+      align-items: center;
+      margin-bottom: 15px;
+   }
 }

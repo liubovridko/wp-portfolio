@@ -53,7 +53,7 @@
 			<div class="header-banner">
 					<div class="banner-content">
 						<h1>John Doe</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor magna risus sed. Et dictumst vel.</p>
 						<button href="<?php echo esc_url(get_theme_mod('banner_button_url', '#')); ?>" class="green-btn">Free SEO Consulting Training</button>
 					</div>
 					<div class="banner-image">
