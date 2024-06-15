@@ -162,6 +162,43 @@ function portfolio_scripts() {
 add_action( 'wp_enqueue_scripts', 'portfolio_scripts' );
 
 /**
+ * New post type.
+ */
+
+ function create_testimonial_cpt() {
+	$labels = array(
+		 'name' => _x('Testimonials', 'Post Type General Name', 'textdomain'),
+		 'singular_name' => _x('Testimonial', 'Post Type Singular Name', 'textdomain'),
+		 'menu_name' => __('Testimonials', 'textdomain'),
+		 'all_items' => __('All Testimonials', 'textdomain'),
+		 'add_new_item' => __('Add New Testimonial', 'textdomain'),
+		 'add_new' => __('Add New', 'textdomain'),
+		 'edit_item' => __('Edit Testimonial', 'textdomain'),
+		 'update_item' => __('Update Testimonial', 'textdomain'),
+		 'view_item' => __('View Testimonial', 'textdomain'),
+		 'view_items' => __('View Testimonials', 'textdomain'),
+		 'search_items' => __('Search Testimonial', 'textdomain'),
+	);
+
+	$args = array(
+		 'label' => __('Testimonial', 'textdomain'),
+		 'description' => __('Testimonials from clients', 'textdomain'),
+		 'labels' => $labels,
+		 'public'      => true,
+		 'show_in_menu' => true,
+		 'has_archive' => true,
+		 'can_export' => true,
+		 'menu_icon' => 'dashicons-format-status',
+		 'supports'    => array('title', 'editor', 'thumbnail', 'custom-fields'),
+		 'rewrite'     => array('slug' => 'testimonials'),
+	);
+
+	register_post_type('testimonial', $args);
+}
+add_action('init', 'create_testimonial_cpt', 0);
+
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';

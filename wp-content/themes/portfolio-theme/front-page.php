@@ -53,31 +53,34 @@ get_header(); ?>
             </div>
         </div>
         <div class="testimonial-slider-wrapper">
-            <div class="testimonial-slider">
-                <div class="testimonial">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/img.webp" alt="Client Photo">
-                    <div class="testimonial-content">
-                        <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim. “</p>
-                        <h3>Frank Hardy</h3>
-                        <span>Your Marketing Crew CEO</span>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/img.webp" alt="Client Photo">
-                    <div class="testimonial-content">
-                        <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim. “</p>
-                        <h3>Frank Hardy</h3>
-                        <span>Your Marketing Crew CEO</span>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/img.webp" alt="Client Photo">
-                    <div class="testimonial-content">
-                        <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing diam, tortor, egestas euismod neque venenatis, viverra. Ante nibh morbi egestas quam lorem ipsum. Eget sit praesent a laoreet. Mi, phasellus quis mauris sollicitudin non. Iaculis ac duis mauris enim. “</p>
-                        <h3>Frank Hardy</h3>
-                        <span>Your Marketing Crew CEO</span>
-                    </div>
-                </div>
+        <div class="testimonial-slider">
+                <?php
+                $args = array(
+                    'post_type' => 'testimonial',
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
+                    'order' => 'DESC'
+                );
+                $testimonial_query = new WP_Query($args);
+                if ($testimonial_query->have_posts()) :
+                    while ($testimonial_query->have_posts()) : $testimonial_query->the_post();
+                        $name = get_field('custom_name'); 
+                        $position = get_field('custom_position'); 
+                        $photo = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                ?>
+                        <div class="testimonial">
+                            <img src="<?php echo esc_url($photo); ?>" alt="Client Photo">
+                            <div class="testimonial-content">
+                                <p><?php the_content(); ?></p>
+                                <h3><?php echo esc_html($name); ?></h3>
+                                <span><?php echo esc_html($position); ?></span>
+                            </div>
+                        </div>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
             </div>
         </div>
         <div class="slider-indicators">
