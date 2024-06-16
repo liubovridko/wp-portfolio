@@ -21,20 +21,12 @@ get_header(); ?>
             <a href="<?php echo esc_url($btn_link); ?>" class="green-btn"><?php echo esc_html($btn_name); ?></a>
         </div>
         <div class="hero-image">
-            <?php
+           <?php
             $hero_image = get_field('hero_image');
             if( $hero_image ) :
-                $hero_img_url = esc_url($hero_image['url']);
-                $hero_img_alt = esc_attr($hero_image['alt']);
-                $hero_img_width = $hero_image['width'];
-                $hero_img_height = $hero_image['height'];
+                echo wp_get_attachment_image($hero_image['ID'], 'full');
+            endif;
             ?>
-                <img src="<?php echo $hero_img_url; ?>" 
-                     alt="<?php  echo $hero_img_alt; ?>" 
-                     width="<?php echo $hero_img_width ?>" 
-                     height="<?php echo $hero_img_height; ?>"
-                >
-            <?php endif; ?>
         </div>
 	  </div>
   </section>
@@ -49,17 +41,9 @@ get_header(); ?>
              <?php
                 $seo_image = get_field('seo_image');
                 if( $seo_image ) :
-                    $image_url = esc_url($seo_image['url']);
-                    $image_alt = esc_attr($seo_image['alt']);
-                    $image_width = $seo_image['width'];
-                    $image_height = $seo_image['height'];
+                    echo wp_get_attachment_image($seo_image['ID'], 'full');
+                endif;
                 ?>
-                    <img src="<?php echo $image_url; ?>" 
-                         alt="<?php  echo $image_alt; ?>" 
-                         width="<?php echo $image_width; ?>" 
-                         height="<?php echo $image_height; ?>"
-                    >
-                <?php endif; ?>
             </div>
       </div>
    </section>

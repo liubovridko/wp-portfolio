@@ -215,6 +215,47 @@ function custom_widgets_init() {
 }
 add_action( 'widgets_init', 'custom_widgets_init', 20 );
 
+/**
+ * Filters the list of attachment image attributes.
+ * 
+ * */
+
+Function custom_get_attachment_image_attributes( $attr, $attachment, $size ) {
+	if ( is_admin() ) {
+		return $attr;
+	}
+
+	// Skip custom logos
+	if ( isset( $attr['class'] ) && false !== strpos( $attr['class'], 'custom-logo' ) ) {
+		return $attr;
+	}
+
+	$width  = false;
+	$height = false;
+
+	if ( is_array( $size ) ) {
+		$width  = (int) $size[0];
+		$height = (int) $size[1];
+	} elseif ( $attachment && is_object( $attachment ) && $attachment->ID ) {
+		$meta = wp_get_attachment_metadata( $attachment->ID );
+		if ( isset( $meta['width'] ) && isset( $meta['height'] ) ) {
+			$width  = (int) $meta['width'];
+			$height = (int) $meta['height'];
+		}
+	}
+
+	if ( $width && $height ) {
+		// Add custom attributes
+		$attr['style'] = isset( $attr['style'] ) ? $attr['style'] : '';
+		$attr['style'] = 'width:100%;height:' . round( 100 * $height / $width, 2 ) . '%;max-width:' . $width . 'px;' . $attr['style'];
+	}
+
+	// Add more custom attributes
+	$attr['loading'] = 'lazy'; // Add lazy loading attribute for performance
+
+	return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'custom_get_attachment_image_attributes', 10, 3 );
 
 /**
  * Implement the Custom Header feature.
