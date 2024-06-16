@@ -244,12 +244,6 @@ Function custom_get_attachment_image_attributes( $attr, $attachment, $size ) {
 		}
 	}
 
-	if ( $width && $height ) {
-		// Add custom attributes
-		$attr['style'] = isset( $attr['style'] ) ? $attr['style'] : '';
-		$attr['style'] = 'width:100%;height:' . round( 100 * $height / $width, 2 ) . '%;max-width:' . $width . 'px;' . $attr['style'];
-	}
-
 	// Add more custom attributes
 	$attr['loading'] = 'lazy'; // Add lazy loading attribute for performance
 
