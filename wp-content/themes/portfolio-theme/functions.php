@@ -154,14 +154,14 @@ function portfolio_scripts() {
 	wp_enqueue_style('portfolio-custom-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), _S_VERSION, 'all');
 
 	// Enqueue normalize
-	wp_enqueue_style( 'realestate-normalize', get_template_directory_uri(). '/assets/css/normalize.css',  array(), _S_VERSION, 'all' );
+	wp_enqueue_style( 'realestate-normalize', get_template_directory_uri(). '/assets/css/normalize.min.css',  array(), _S_VERSION, 'all' );
 
 	// Enqueue main stylesheet
-	wp_enqueue_style( 'portfolio-style', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all');
+	wp_enqueue_style( 'portfolio-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), _S_VERSION, 'all');
 
 	// Enqueue scripts
-	wp_enqueue_script( 'jquery', get_template_directory_uri(). '/assets/js/jquery-3.7.1.js',  array(), '1.0.0', true  );
-	wp_enqueue_script( 'portfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'jquery', get_template_directory_uri(). '/assets/js/jquery-3.7.1.min.js',  array(), '1.0.0', true  );
+	wp_enqueue_script( 'portfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.min.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'portfolio-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery', 'portfolio-navigation'), _S_VERSION, true );
 
 	
@@ -214,7 +214,6 @@ function custom_widgets_init() {
 
 }
 add_action( 'widgets_init', 'custom_widgets_init', 20 );
-
 
 
 /**
