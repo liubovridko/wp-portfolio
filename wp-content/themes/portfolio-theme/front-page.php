@@ -11,13 +11,17 @@ get_header(); ?>
 
    <section class="superstar-seo">
          <div class="content-wrapper">
-               <div class="text-column">
-                  <h2>Superstar SEO</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-               </div>
-               <div class="image-column">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/img_devices.png" alt="Superstar SEO">
-               </div>
+              <div class="text-column">
+                 <h2><?php the_field('seo_heading'); ?></h2>
+                 <p><?php the_field('seo_content'); ?></p>
+             </div>
+             <div class="image-column">
+               <?php
+                $seo_image = get_field('seo_image');
+                if( $seo_image ) : ?>
+                    <img src="<?php echo esc_url($seo_image['url']); ?>" alt="<?php the_field('seo_heading'); ?>">
+                <?php endif; ?>
+            </div>
       </div>
    </section>
 
