@@ -535,6 +535,7 @@ footer p {
 .slider-nav button:active {
    background: #69AE96;
    border: 2px solid #3B7A64;
+   box-shadow: 0 0 4px 4px rgba(105, 174, 150, 0.4);
    outline: none;
 }
 
@@ -584,7 +585,7 @@ footer p {
    display: flex;
    flex-shrink: 0;
    width: 100%;
-   padding: 20px;
+   padding: 30px 40px 30px 30px;
    box-sizing: border-box;
    transition: transform 0.5s ease;
 }
@@ -592,8 +593,9 @@ footer p {
 .testimonial img {
    width: 50%;
    height: auto;
-   object-fit: cover;
+   object-fit: fill;
    margin-right: 50px;
+   border-radius: 10px;
 }
 
 .testimonial-content {
@@ -653,6 +655,9 @@ footer p {
 @media (max-width: 992px) {
    .section-header h2 {
       font-size: 57px;
+   }
+   .testimonial img {
+      margin-right: 40px;
    }
 
 }
@@ -716,43 +721,44 @@ footer p {
 }
 .contact form input,
 .contact form textarea {
-   border: 1px solid #C9CCD4;
+   border: 1px solid rgba(201, 204, 212, 0.5);
+   box-shadow: inset 0 0 1px 1px rgba(201, 204, 212, 0.5);
    border-radius: 6px;
+   font-family: 'Montserrat', sans-serif;
    font-size: 16px;
    padding: 18px 24px;
    font-weight: 300;
    line-height: 24px;
    text-align: left;
-   opacity: 50%;
+   color:rgb(0 0 0 / 50%);
 }
 .contact form input {
    width: 100%;
-}
-.contact form textarea {
-   margin-bottom: 20px;
 }
 
 .contact form input:focus,
 .contact form input:active,
 .contact form input:focus-visible  {
-   border: 4px solid #69AE964D;
-   color: #000000;
+   border: 1px solid #3B7A64;
+   box-shadow: 0 0 4px 4px rgba(105, 174, 150, 0.3);
+   color: #1f1f1f;
    outline: none;
 }
 
-.forminator-textarea:focus,
-.forminator-textarea:active, 
-.forminator-textarea:focus-visible {
-   border: 4px solid #69AE964D;
-   color: #000000;
+.contact form textarea:focus,
+.contact form textarea:active, 
+.contact form textarea:focus-visible {
+   border: 1px solid #3B7A64;
+   box-shadow: 0 0 4px 4px rgba(105, 174, 150, 0.3);
+   color: #1f1f1f;
    outline: none;
 }
 
-.forminator-input:disabled,
-.forminator-textarea:disabled {
+.contact form input:disabled,
+.contact form textarea:disabled {
    background-color: #E5E5E5;
    border: 1px solid #C9CCD4;
-   color: #000000;
+   color: #1f1f1f;
 }
 
 form .green-btn {
@@ -798,6 +804,12 @@ form .btn-with-icon::before {
    color: #333;
 }
 
+@media (max-width:992px) {
+   .contact-text h2 {
+      font-size: 57px;
+   }
+}
+
 @media (max-width: 768px) {
    .contact {
       padding: 90px 0;
@@ -810,4 +822,32 @@ form .btn-with-icon::before {
       align-items: center;
       margin-bottom: 15px;
    }
+}
+
+/* Forminator*/
+
+.contact #forminator-module-9.forminator-ui {
+   margin-top: -10px;
+}
+
+.contact #forminator-module-9.forminator-ui .forminator-row {
+   width: 100%;
+   margin:0;
+}
+
+.contact #forminator-module-9.forminator-ui .forminator-row .forminator-col {
+  padding: 0 0 0 15px;
+}
+
+.contact #forminator-module-9.forminator-ui .forminator-row:nth-child(4) {
+   margin-bottom: 20px;
+}
+
+.forminator-error-message {
+   color:#cf2e2e;
+}
+
+.forminator-response-message {
+   padding: 0 15px;
+   color:#58a084;
 }
