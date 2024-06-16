@@ -67,11 +67,14 @@ get_header(); ?>
                         $name = get_field('custom_name'); 
                         $position = get_field('custom_position'); 
                         $photo = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        $content = get_the_content();
+                        $content = apply_filters('the_content', $content);
+                        $content = str_replace(array('<p>', '</p>'), '', $content); // Remove <p>
                 ?>
                         <div class="testimonial">
                             <img src="<?php echo esc_url($photo); ?>" alt="Client Photo">
                             <div class="testimonial-content">
-                                <p><?php the_content(); ?></p>
+                                <p><?php echo $content; ?></p>
                                 <h3><?php echo esc_html($name); ?></h3>
                                 <span><?php echo esc_html($position); ?></span>
                             </div>
