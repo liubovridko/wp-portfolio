@@ -103,7 +103,7 @@ get_header(); ?>
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <textarea name="message" placeholder="Write Message" required></textarea>
-                <button type="submit" class="green-btn"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/Envelope.svg" alt="Icon submit"> Submit Message</button>
+                <button type="submit" class="green-btn btn-with-icon">Submit Message</button>
             </form>
       </div>
     </section>
