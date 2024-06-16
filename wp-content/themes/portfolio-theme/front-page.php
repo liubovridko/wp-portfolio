@@ -23,8 +23,13 @@ get_header(); ?>
         <div class="hero-image">
             <?php
             $hero_image = get_field('hero_image');
-            if( $hero_image ) : ?>
-                <img src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php the_field('hero_heading'); ?>">
+            if( $hero_image ) :
+                $hero_img_url = esc_url($hero_image['url']);
+                $hero_img_alt = esc_attr($hero_image['alt']);
+                $hero_img_width = $hero_image['width'];
+                $hero_img_height = $hero_image['height'];
+            ?>
+                <img src="<?php echo $hero_img_url; ?>" alt="<?php  echo $hero_img_alt; ?>" width="<?php echo $hero_img_width ?>" height="<?php echo $hero_img_height; ?>">
             <?php endif; ?>
         </div>
 	  </div>
@@ -37,10 +42,15 @@ get_header(); ?>
                  <p><?php the_field('seo_content'); ?></p>
              </div>
              <div class="image-column">
-               <?php
+             <?php
                 $seo_image = get_field('seo_image');
-                if( $seo_image ) : ?>
-                    <img src="<?php echo esc_url($seo_image['url']); ?>" alt="<?php the_field('seo_heading'); ?>">
+                if( $seo_image ) :
+                    $image_url = esc_url($seo_image['url']);
+                    $image_alt = esc_attr($seo_image['alt']);
+                    $image_width = $seo_image['width'];
+                    $image_height = $seo_image['height'];
+                ?>
+                    <img src="<?php echo $image_url; ?>" alt="<?php  echo $image_alt; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>">
                 <?php endif; ?>
             </div>
       </div>
@@ -91,13 +101,16 @@ get_header(); ?>
                     while ($testimonial_query->have_posts()) : $testimonial_query->the_post();
                         $name = get_field('custom_name'); 
                         $position = get_field('custom_position'); 
-                        $photo = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        $photo_data = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full');
+                        $photo_url = $photo_data[0];
+                        $photo_width = $photo_data[1];
+                        $photo_height = $photo_data[2];
                         $content = get_the_content();
                         $content = apply_filters('the_content', $content);
                         $content = str_replace(array('<p>', '</p>'), '', $content); // Remove <p>
                 ?>
                         <div class="testimonial">
-                            <img src="<?php echo esc_url($photo); ?>" alt="Client Photo">
+                        <img src="<?php echo esc_url($photo_url); ?>" alt="Client Photo" width="<?php echo $photo_width; ?>" height="<?php echo $photo_height; ?>">
                             <div class="testimonial-content">
                                 <p><?php echo $content; ?></p>
                                 <h3><?php echo esc_html($name); ?></h3>
