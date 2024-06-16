@@ -18,7 +18,7 @@ get_header(); ?>
              $btn_link = get_field('btn_link');
              $btn_name = get_field('btn_name');
             ?>
-            <button href="<?php echo esc_url($btn_link); ?>" class="green-btn"><?php echo esc_html($btn_name); ?></button>
+            <a href="<?php echo esc_url($btn_link); ?>" class="green-btn"><?php echo esc_html($btn_name); ?></a>
         </div>
         <div class="hero-image">
             <?php
