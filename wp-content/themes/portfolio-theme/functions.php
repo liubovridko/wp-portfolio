@@ -158,7 +158,6 @@ function portfolio_scripts() {
 
 	// Enqueue main stylesheet
 	wp_enqueue_style( 'portfolio-style', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all');
-	wp_style_add_data( 'portfolio-style', 'rtl', 'replace' );
 
 	// Enqueue scripts
 	wp_enqueue_script( 'jquery', get_template_directory_uri(). '/assets/js/jquery-3.7.1.js',  array(), '1.0.0', true  );
