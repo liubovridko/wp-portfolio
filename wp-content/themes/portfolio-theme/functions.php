@@ -86,15 +86,7 @@ function portfolio_setup() {
 	 *
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
-	add_theme_support(
-		'custom_logo',
-		array(
-			'height'      => 40,
-			'width'       => 180,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+	add_theme_support('custom_logo');
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
@@ -266,6 +258,25 @@ require get_template_directory() . '/inc/template-tags.php';
  */
 require get_template_directory() . '/inc/template-functions.php';
 
+function portfolio_customize_register( $wp_customize ) {
+	// Add Custom Logo Setting
+	$wp_customize->add_setting('custom_logo', array(
+		 'default' => '',
+		 'sanitize_callback' => 'absint', // Ensures only integers are accepted
+	));
+
+	// Add Custom Logo Control
+	$wp_customize->add_control(new WP_Customize_Cropped_Image_Control($wp_customize, 'custom_logo', array(
+		 'label' => __('Custom Logo', 'portfolio'),
+		 'section' => 'title_tagline',
+		 'settings' => 'custom_logo',
+		 'flex_width' => true, 
+		 'flex_height' => true, 
+		 'width' => 180, // Default width
+		 'height' => 40, // Default height
+	)));
+}
+add_action('customize_register', 'portfolio_customize_register');
 
 
 
