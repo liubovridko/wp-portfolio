@@ -95,10 +95,9 @@ get_header(); ?>
         <div class="container">
             <div class="contact-text">
                <h2>Get in Touch</h2>
-               <div class="contact-info">
-                  <a href="mailto:hello@domainname.com">hello@domainname.com</a>
-                  <p>237 Maple Avenue, Suite 902</p>
-               </div>
+               <?php if ( is_active_sidebar( 'contact-section' ) ) : ?>
+                <?php dynamic_sidebar( 'contact-section' ); ?>
+                <?php endif; ?>
             </div>
             <form action="#">
                 <input type="text" name="name" placeholder="Name" required>

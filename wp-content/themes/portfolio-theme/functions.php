@@ -131,6 +131,17 @@ function portfolio_widgets_init() {
 		 'before_title'  => '<h2 class="widget-title">',
 		 'after_title'   => '</h2>',
 	));
+
+	register_sidebar( array(
+		'name'          => __( 'Contact Section', 'portfolio' ),
+		'id'            => 'contact-section',
+		'description'   => __( 'Widgets in this area will be shown in the contact section.', 'portfolio' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>',
+  ) );
+
 }
 add_action('widgets_init', 'portfolio_widgets_init');
 
@@ -196,6 +207,15 @@ add_action( 'wp_enqueue_scripts', 'portfolio_scripts' );
 	register_post_type('testimonial', $args);
 }
 add_action('init', 'create_testimonial_cpt', 0);
+
+
+function custom_widgets_init() {
+	require get_template_directory() . '/widgets/get-in-touch-widget.php';
+	register_widget( 'Portfolio_Get_In_Touch');
+
+}
+add_action( 'widgets_init', 'custom_widgets_init', 20 );
+
 
 
 /**

@@ -1,3 +1,14 @@
 to access the admin цe use: 
 login:lu4ichka@gmail.com / Admin
 password: XTtTRfQ)v8U3pBkrF0
+
+
+Widgets to be Activated:
+
+-Get in Touch Widget for the Contact Section
+-Menu Widget for the Footer Menu
+
+
+Header Button Link:
+
+"Free SEO Consulting Training" button link set via Customizer in the “Banner Settings” section.
