@@ -9,6 +9,19 @@ get_header(); ?>
 
 <main id="primary" class="site-main">
 
+  <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+            <h1>John Doe</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor magna risus sed. Et dictumst vel.</p>
+            <button href="<?php echo esc_url(get_theme_mod('banner_button_url', '#')); ?>" class="green-btn">Free SEO Consulting Training</button>
+        </div>
+        <div class="hero-image">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/Man_img.png" alt="Banner Image">
+        </div>
+	  </div>
+  </section>
+
    <section class="superstar-seo">
          <div class="content-wrapper">
               <div class="text-column">
