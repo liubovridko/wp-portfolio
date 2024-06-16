@@ -29,7 +29,11 @@ get_header(); ?>
                 $hero_img_width = $hero_image['width'];
                 $hero_img_height = $hero_image['height'];
             ?>
-                <img src="<?php echo $hero_img_url; ?>" alt="<?php  echo $hero_img_alt; ?>" width="<?php echo $hero_img_width ?>" height="<?php echo $hero_img_height; ?>">
+                <img src="<?php echo $hero_img_url; ?>" 
+                     alt="<?php  echo $hero_img_alt; ?>" 
+                     width="<?php echo $hero_img_width ?>" 
+                     height="<?php echo $hero_img_height; ?>"
+                >
             <?php endif; ?>
         </div>
 	  </div>
@@ -50,7 +54,11 @@ get_header(); ?>
                     $image_width = $seo_image['width'];
                     $image_height = $seo_image['height'];
                 ?>
-                    <img src="<?php echo $image_url; ?>" alt="<?php  echo $image_alt; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>">
+                    <img src="<?php echo $image_url; ?>" 
+                         alt="<?php  echo $image_alt; ?>" 
+                         width="<?php echo $image_width; ?>" 
+                         height="<?php echo $image_height; ?>"
+                    >
                 <?php endif; ?>
             </div>
       </div>
