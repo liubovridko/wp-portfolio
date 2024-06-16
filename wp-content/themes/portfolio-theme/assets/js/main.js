@@ -1,5 +1,7 @@
-// Testimonials slider
+
 jQuery(document).ready(function($) {
+
+   // Testimonials slider
    let currentIndex = 0;
    const $slider = $('.testimonial-slider');
    const $slides = $slider.children('.testimonial');
@@ -31,5 +33,8 @@ jQuery(document).ready(function($) {
 
    // Initialize
    showSlide(currentIndex);
+
+   // Remove attr rows
+   $('textarea[name="textarea-1"]').attr('rows', '0');
 });
 

@@ -102,13 +102,8 @@ get_header(); ?>
                 <?php dynamic_sidebar( 'contact-section' ); ?>
                 <?php endif; ?>
             </div>
-            <form action="#">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Write Message" required></textarea>
-                <button type="submit" class="green-btn btn-with-icon">Submit Message</button>
-            </form>
-      </div>
+            <?php echo do_shortcode( '[forminator_form id="9"]' ); ?>
+      </div> 
     </section>
 </main>
 <?php get_footer(); ?>
