@@ -12,3 +12,4 @@ Widgets to be Activated:
 Header Button Link:
 
 "Free SEO Consulting Training" button link set via Customizer in the “Banner Settings” section.
+the content of the "Superstar SEO" and "Hero" sections is edited in the admin area on the Home page

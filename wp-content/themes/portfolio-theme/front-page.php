@@ -12,12 +12,20 @@ get_header(); ?>
   <section class="hero">
       <div class="hero-container">
         <div class="hero-content">
-            <h1>John Doe</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor magna risus sed. Et dictumst vel.</p>
-            <button href="<?php echo esc_url(get_theme_mod('banner_button_url', '#')); ?>" class="green-btn">Free SEO Consulting Training</button>
+            <h1><?php the_field('hero_heading'); ?></h1>
+            <p><?php the_field('hero_content'); ?></p>
+            <?php 
+             $btn_link = get_field('btn_link');
+             $btn_name = get_field('btn_name');
+            ?>
+            <button href="<?php echo esc_url($btn_link); ?>" class="green-btn"><?php echo esc_html($btn_name); ?></button>
         </div>
         <div class="hero-image">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/Man_img.png" alt="Banner Image">
+            <?php
+            $hero_image = get_field('hero_image');
+            if( $hero_image ) : ?>
+                <img src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php the_field('hero_heading'); ?>">
+            <?php endif; ?>
         </div>
 	  </div>
   </section>
