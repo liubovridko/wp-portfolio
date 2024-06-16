@@ -31,26 +31,6 @@ function portfolio_customize_register( $wp_customize ) {
 			  )
 		 );
 	}
-
-	// Add a new section for the Banner Button URL
-	$wp_customize->add_section('banner_section', array(
-		 'title'       => __('Banner Settings', 'portfolio'),
-		 'description' => __('Settings for the banner section.', 'portfolio'),
-		 'priority'    => 30,
-	));
-
-	// Add a setting for the Banner Button URL
-	$wp_customize->add_setting('banner_button_url', array(
-		 'default'           => '#',
-		 'sanitize_callback' => 'esc_url_raw',
-	));
-
-	// Add a control to edit the Banner Button URL
-	$wp_customize->add_control('banner_button_url', array(
-		 'label'   => __('Banner Button URL', 'portfolio'),
-		 'section' => 'banner_section',
-		 'type'    => 'url',
-	));
 }
 add_action( 'customize_register', 'portfolio_customize_register' );
 
