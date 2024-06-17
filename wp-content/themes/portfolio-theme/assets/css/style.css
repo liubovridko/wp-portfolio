@@ -106,7 +106,8 @@ nav .nav-menu li a {
    display: block;
 }
 
-nav .nav-menu li a:hover {
+nav .nav-menu li a:hover,
+nav .nav-menu li.current-menu-item > a {
    font-weight: 500;
    color: #1F1F1F;
 }
@@ -119,7 +120,7 @@ nav .nav-menu .sub-menu {
    display: none;
    position: absolute;
    width: 134px;
-   top: 100%;
+   top: calC(100% + 10px);
    left: -28px;
    background-color: #fff;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -127,6 +128,21 @@ nav .nav-menu .sub-menu {
    border-radius: 12px;
    margin: 0;
    padding: 20px;
+   z-index: 10;
+}
+
+/* Custom Shape for Submenu */
+nav .nav-menu ul:before {
+   content: '';
+   position: absolute;
+   top: -10px;
+   left: 42px;
+   border-width: 0 20px 15px 10px;
+   border-style: solid;
+   border-color: transparent transparent #FFFFFF transparent;
+   width: 0;
+   height: 0;
+   z-index: 10;
 }
 
 nav .nav-menu .sub-menu li {
@@ -151,8 +167,19 @@ nav .nav-menu .sub-menu li a:hover {
    color: #1F1F1F;
 }
 
-nav .nav-menu .menu-item-has-children:hover .sub-menu {
-   display: block;
+
+nav .nav-menu  li:hover > ul,
+nav .nav-menu  li:focus-within > ul {
+    display: block;
+}
+
+/* Keep Parent Item Active on Submenu Hover */
+nav .nav-menu  li:hover > a,
+nav .nav-menu  li:focus-within > a,
+nav .nav-menu li ul:hover > a,
+nav .nav-menu li ul:focus-within > a {
+    color: #1F1F1F;
+    font-weight: 500;
 }
 
 
