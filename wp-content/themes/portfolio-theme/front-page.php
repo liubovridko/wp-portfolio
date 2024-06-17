@@ -41,7 +41,7 @@ get_header(); ?>
              <?php
                 $seo_image = get_field('seo_image');
                 if( $seo_image ) :
-                    echo wp_get_attachment_image($seo_image['ID'], 'full');
+                    echo wp_get_attachment_image($seo_image['ID'], 'medium_large');
                 endif;
                 ?>
             </div>
@@ -93,16 +93,17 @@ get_header(); ?>
                     while ($testimonial_query->have_posts()) : $testimonial_query->the_post();
                         $name = get_field('custom_name'); 
                         $position = get_field('custom_position'); 
-                        $photo_data = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full');
-                        $photo_url = $photo_data[0];
-                        $photo_width = $photo_data[1];
-                        $photo_height = $photo_data[2];
                         $content = get_the_content();
                         $content = apply_filters('the_content', $content);
                         $content = str_replace(array('<p>', '</p>'), '', $content); // Remove <p>
+                        $photo = wp_get_attachment_image_src(get_post_thumbnail_id( get_the_ID()));
                 ?>
                         <div class="testimonial">
-                        <img src="<?php echo esc_url($photo_url); ?>" alt="Client Photo" width="<?php echo $photo_width; ?>" height="<?php echo $photo_height; ?>">
+                        <?php
+                        if( has_post_thumbnail() ) :
+                            echo wp_get_attachment_image( get_post_thumbnail_id( get_the_ID() ), 'small', false, array( 'alt' => 'Client Photo' ) );
+                        endif;
+                        ?>
                             <div class="testimonial-content">
                                 <p><?php echo $content; ?></p>
                                 <h3><?php echo esc_html($name); ?></h3>
