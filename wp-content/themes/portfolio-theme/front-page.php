@@ -51,7 +51,7 @@ get_header(); ?>
    <section class="testimonials">
     <div class="container">
         <div class="section-header">
-            <h2>What My <span>Clients Say</span></h2>
+        <h2><?php the_field('testimonials_heading'); ?> <span><?php the_field('testimonials_heading_span'); ?></span></h2>
             <div class="slider-nav">
                <button class="prev">
                   <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
