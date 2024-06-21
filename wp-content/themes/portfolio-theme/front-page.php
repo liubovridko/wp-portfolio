@@ -96,14 +96,13 @@ get_header(); ?>
                         $content = get_the_content();
                         $content = apply_filters('the_content', $content);
                         $content = str_replace(array('<p>', '</p>'), '', $content); // Remove <p>
-                        $photo = wp_get_attachment_image_src(get_post_thumbnail_id( get_the_ID()));
                 ?>
                         <div class="testimonial">
-                        <?php
-                        if( has_post_thumbnail() ) :
-                            echo wp_get_attachment_image( get_post_thumbnail_id( get_the_ID() ), 'small', false, array( 'alt' => 'Client Photo' ) );
-                        endif;
-                        ?>
+                            <?php
+                               if( has_post_thumbnail() ) :
+                                    echo wp_get_attachment_image( get_post_thumbnail_id( get_the_ID() ), 'small', false, array( 'alt' => 'Client Photo' ) );
+                                endif;
+                                ?>
                             <div class="testimonial-content">
                                 <p><?php echo $content; ?></p>
                                 <h3><?php echo esc_html($name); ?></h3>

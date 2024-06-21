@@ -46,8 +46,8 @@
      * @param array $instance The widget options
      */
     public function form( $instance ) {
-        $email = ! empty( $instance['email'] ) ? $instance['email'] : __( 'hello@domainname.com', 'portfolio' );
-        $address = ! empty( $instance['address'] ) ? $instance['address'] : __( '237 Maple Avenue, Suite 902', 'portfolio' );
+        $email = ! empty( $instance['email'] ) ? $instance['email'] : __( 'hello@domainexample.com', 'portfolio' );
+        $address = ! empty( $instance['address'] ) ? $instance['address'] : __( '237 Haylee Islands Suite 960', 'portfolio' );
 
         ?>
         <p>

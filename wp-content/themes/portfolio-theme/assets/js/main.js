@@ -18,11 +18,13 @@ jQuery(document).ready(function($) {
    $('.prev').click(function() {
        currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
        showSlide(currentIndex);
+       $(this).blur();
    });
 
    $('.next').click(function() {
        currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
        showSlide(currentIndex);
+       $(this).blur();
    });
 
    $('.indicator').click(function() {
@@ -36,5 +38,6 @@ jQuery(document).ready(function($) {
 
    // Remove attr rows
    $('textarea[name="textarea-1"]').attr('rows', '0');
+
 });
 

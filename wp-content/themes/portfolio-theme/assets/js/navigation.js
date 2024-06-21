@@ -85,5 +85,40 @@
 			  menuItem.classList.toggle( 'focus' );
 		 }
 	}
+
+	const menuItemsWithChildren = document.querySelectorAll('nav .nav-menu > li.menu-item-has-children');
+
+	menuItemsWithChildren.forEach(function(menuItem) {
+		 menuItem.addEventListener('touchstart', function(event) {
+			  event.stopPropagation();
+	
+			  const subMenu = menuItem.querySelector('.sub-menu');
+			  const isOpen = subMenu.style.display === 'block';
+
+			  menuItemsWithChildren.forEach(function(item) {
+					const itemSubMenu = item.querySelector('.sub-menu');
+					if (itemSubMenu) {
+						 itemSubMenu.style.display = 'none';
+						 item.querySelector('a').classList.remove('active');
+					}
+			  });
+
+			  if (!isOpen) {
+					subMenu.style.display = 'block';
+					menuItem.querySelector('a').classList.add('active');
+			  }
+		 });
+	});
+
+	document.addEventListener('touchstart', function(event) {
+		 menuItemsWithChildren.forEach(function(menuItem) {
+			  const subMenu = menuItem.querySelector('.sub-menu');
+			  if (subMenu) {
+					subMenu.style.display = 'none';
+					menuItem.querySelector('a').classList.remove('active');
+			  }
+		 });
+	});
+
 }() );
 

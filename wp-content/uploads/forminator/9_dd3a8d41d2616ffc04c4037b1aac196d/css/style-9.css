@@ -1081,5 +1081,3 @@
 	.forminator-ui#forminator-module-9.forminator-design--default .StripeElement--focus.StripeElement--invalid {
 		border-color: #E04562;
 	}
-
-.forminator-ui.forminator-custom-form-9 {display: flex !important;width: 570px !important;flex-direction: column !important;gap: 10px !important;align-items: flex-start !important;}

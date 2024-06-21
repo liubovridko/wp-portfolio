@@ -154,7 +154,8 @@ function portfolio_scripts() {
 	// Enqueue scripts
 	wp_enqueue_script( 'jquery', get_template_directory_uri(). '/assets/js/jquery-3.7.1.min.js',  array(), '1.0.0', true  );
 	wp_enqueue_script( 'portfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.min.js', array('jquery'), _S_VERSION, true );
-	wp_enqueue_script( 'portfolio-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery', 'portfolio-navigation'), _S_VERSION, true );
+	wp_enqueue_script( 'form-validation', get_template_directory_uri() . '/assets/js/form-validation.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'portfolio-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery', 'portfolio-navigation', 'form-validation'), _S_VERSION, true );
 
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -166,7 +167,6 @@ add_action( 'wp_enqueue_scripts', 'portfolio_scripts' );
 /**
  * New post type.
  */
-
  function create_testimonial_cpt() {
 	$labels = array(
 		 'name' => _x('Testimonials', 'Post Type General Name', 'textdomain'),
@@ -211,7 +211,6 @@ add_action( 'widgets_init', 'custom_widgets_init', 20 );
  * Filters the list of attachment image attributes.
  * 
  * */
-
 Function custom_get_attachment_image_attributes( $attr, $attachment, $size ) {
 	if ( is_admin() ) {
 		return $attr;
@@ -242,6 +241,29 @@ Function custom_get_attachment_image_attributes( $attr, $attachment, $size ) {
 	return $attr;
 }
 add_filter( 'wp_get_attachment_image_attributes', 'custom_get_attachment_image_attributes', 10, 3 );
+
+
+/**
+ * Forminator the Custom Validation text form.
+ */
+add_filter('forminator_custom_form_submit_errors', 'custom_forminator_validate_text_field', 10, 3);
+
+function custom_forminator_validate_text_field($submit_errors, $form_id, $field_data_array) {
+	$target_form_id = 9;
+
+	if ($form_id == $target_form_id) {
+		 foreach ($field_data_array as $field) {
+			  if ($field['name'] == 'text-1') {
+					$value = trim($field['value']);
+					if (!preg_match('/^[^\d]+$/', $value)) {
+						$submit_errors[][$field['name']] = 'Please enter a valid name without numbers.';
+					}
+			  }
+	}
+ }
+	return $submit_errors;
+}
+
 
 /**
  * Implement the Custom Header feature.
